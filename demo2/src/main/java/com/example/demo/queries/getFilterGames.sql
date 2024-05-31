@@ -1,0 +1,1 @@
+stats.games_played

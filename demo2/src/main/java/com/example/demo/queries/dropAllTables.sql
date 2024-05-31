@@ -1,0 +1,1 @@
+DROP TABLE conference, division, team, nba_position, player, player_statistics;
