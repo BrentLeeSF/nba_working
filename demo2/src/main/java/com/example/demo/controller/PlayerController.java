@@ -54,10 +54,10 @@ public class PlayerController {
 		cont.executeSQLQueryFile(listOfQueriesToExecute);
 		
 		ExcelExtraction	ex = new ExcelExtraction();
-		String eastCoastStatsFile = "./demo2/2022-2023_East_Stats.xlsx";
+		String Stats2022_2023File = "./demo2/2022-2023_Stats_copy.xlsx";
 		ArrayList<PlayerStatistics> arrayListOfEastStats = new ArrayList<>();
 
-		arrayListOfEastStats = ex.extractExcelFile(eastCoastStatsFile, 3, arrayListOfEastStats);
+		arrayListOfEastStats = ex.extractExcelFile(Stats2022_2023File, 4, arrayListOfEastStats);
 		HashMap<String, Player> playerMapReturned = ex.getPlayerMap();
 		
 		try {
@@ -78,6 +78,17 @@ public class PlayerController {
 		List<Player> playerData = playerRepository.findAll();
 		if(playerData != null) {
 			return new ResponseEntity<>(playerData, HttpStatus.OK);
+		}
+		else {
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		}
+	}
+
+	@GetMapping("/players/firstname")
+	public ResponseEntity<Optional<Player>> getPlayerByFirstName(@PathVariable("firstName") String firstName) {
+		Optional<Player> player = Optional.ofNullable(playerRepository.findByFirstName(firstName));
+		if (player != null) {
+			return new ResponseEntity<>(player, HttpStatus.OK);
 		}
 		else {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
