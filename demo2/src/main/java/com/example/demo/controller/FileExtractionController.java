@@ -83,7 +83,7 @@ public class FileExtractionController {
             prepStatement.setDouble(10, eachPlayerStat.points);
             prepStatement.setDouble(11, eachPlayerStat.fieldGoalsMade);
             prepStatement.setDouble(12, eachPlayerStat.fieldGoalAttempts);
-            prepStatement.setDouble(13, eachPlayerStat.fieldGoalAttempts);
+            prepStatement.setDouble(13, eachPlayerStat.fieldGoalPercentage);
             prepStatement.setDouble(14, eachPlayerStat.threePointsMade);
             prepStatement.setDouble(15, eachPlayerStat.threePointAttempts);
             prepStatement.setDouble(16, eachPlayerStat.threePointPercentage);
